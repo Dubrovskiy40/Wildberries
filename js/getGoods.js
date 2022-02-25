@@ -5,6 +5,7 @@ const getGoods = () => {
         fetch('https://wildberriestest-dc6fa-default-rtdb.firebaseio.com/db.json')
             .then(response => response.json())
             .then(data => {
+                window.localStorage.setItem('wildberries', JSON.stringify({dataSet: 'data'}));
                 console.log(data);
             })
     }
@@ -16,13 +17,15 @@ const getGoods = () => {
         })
     })
 
-    localStorage.setItem('goods', JSON.stringify({name: 'all'}));
-
-    const goods = JSON.parse(localStorage.getItem('goods'));
+    const goods = JSON.parse(localStorage.getItem('wildberries'));
     console.log(goods);
-    console.log(localStorage);
-    localStorage.removeItem('goods');
-    console.log(localStorage);
+
+    // localStorage.setItem('goods', JSON.stringify({name: 'all'}));
+    // const goods = JSON.parse(localStorage.getItem('goods'));
+    // console.log(goods);
+    // console.log(localStorage);
+    // localStorage.removeItem('goods');
+    // console.log(localStorage);
 };
 
 getGoods();
